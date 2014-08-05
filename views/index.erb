@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+	<head>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('#convert').click(function(){
+					$.ajax({
+						url: "/html",
+						type: "post",
+						data: {
+							markdown: $("#markdown").val()
+						}
+					}).done(function(data){
+						console.log(data);
+						$("#preview").empty();
+						$("#preview").append(data)
+					}).fail(function(data){
+						console.log(data);
+					});
+				});
+			});
+		</script>
+		<title>markdown!!</title>
+	</head>
+	<body>
+		<div class="markdown">
+			<textarea id="markdown"></textarea>
+			<button id="convert">preview!!</button>
+		</div>
+		<div id="preview">
+		</div>
+	</body>
+</html>
